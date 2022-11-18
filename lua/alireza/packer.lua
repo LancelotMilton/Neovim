@@ -8,7 +8,38 @@ return require('packer').startup(function()
 -- or                            , branch = '0.1.x',
   requires = { {'nvim-lua/plenary.nvim'} }
 }
+    
+--add lualine, a status bar
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
 
+--install barbar, a bar manager
+use {
+  'romgrk/barbar.nvim',
+  requires = {'kyazdani42/nvim-web-devicons'}
+}
+
+use {
+   'preservim/nerdcommenter'
+}
+--add telescope, a fuzzyfinder
+use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+-- or                            , branch = '0.1.x',
+  requires = { {'nvim-lua/plenary.nvim'} }
+}
+
+--add hop, a plugin for moving fastly
+use {
+  'phaazon/hop.nvim',
+  branch = 'v2', -- optional but strongly recommended
+  config = function()
+    -- you can configure Hop the way you like here; see :h hop-config
+    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end
+}
   -- Lazy loading:
   -- Load on specific commands
   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
@@ -76,4 +107,5 @@ return require('packer').startup(function()
   }
   -- You can alias plugin names
   use {'dracula/vim', as = 'dracula'}
+  use {'vim-airline/vim-airline'}
 end)
